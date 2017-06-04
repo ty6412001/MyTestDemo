@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.fsd.mvvmlight.freeseeds.topics.TopicItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        bind:clickCommand="@{viewModel.itemClickCommand}"
+        android:clickable="true"
+        android:padding="1dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            bind:uri="@{viewModel.imageUrl}"
+            fresco:placeholderImage="@mipmap/photosplaceholder"
+            fresco:placeholderImageScaleType="fitCenter"
+            />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image"
+            android:text="@{viewModel.title}"
+            android:hint="@string/app_name"
+            android:textColor="@{viewModel.viewStyle.titleTextColor}"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:text="@{viewModel.user}"
+            android:textColor="@{viewModel.viewStyle.titleTextColor}"
+            android:textStyle="bold"
+            />
+
+
+    </RelativeLayout>
+</layout>
